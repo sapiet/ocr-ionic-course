@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>LendBook</ion-title>
+    <ion-title>
+      {{ book.name }}
+      -
+      {{ book.editor }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-button [disabled]="false === book.lent" (click)="action(false)">Rendre</ion-button>
+  <ion-button [disabled]="true === book.lent" (click)="action(true)">Prêter</ion-button>
 </ion-content>

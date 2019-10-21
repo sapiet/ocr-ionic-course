@@ -19,4 +19,18 @@ export class DataService {
       lent: true
     }
   ];
+
+  public cds = [
+    {
+      name: 'The Common Man\'s Collapse',
+      artist: 'Veil Of Maya',
+      picture: 'https://images-na.ssl-images-amazon.com/images/I/81EHgARqH8L._SL1425_.jpg',
+      lent: false
+    }, {
+      name: 'Titan',
+      artist: 'Anup Sastry',
+      picture: 'https://f4.bcbits.com/img/a3172076385_10.jpg',
+      lent: false
+    },
+  ]
 }

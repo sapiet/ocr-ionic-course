@@ -18,7 +18,7 @@ export class BookListPage {
   }
 
   async showDetails(book) {
-    this.modalCtrl.create({component: LendBookPage})
+    this.modalCtrl.create({component: LendBookPage, componentProps: {book}})
         .then(modal => modal.present());
   }
 

@@ -9,12 +9,18 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataService } from './services/data.service';
-import {LendBookPage} from './pages/lend-book/lend-book.page';
+import { LendBookPage } from './pages/lend-book/lend-book.page';
+import {LendCdPage} from './pages/lend-cd/lend-cd.page';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+      AppComponent,
+      LendBookPage,
+      LendCdPage
+  ],
   entryComponents: [
-      LendBookPage
+      LendBookPage,
+      LendCdPage
   ],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
