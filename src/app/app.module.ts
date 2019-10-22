@@ -13,6 +13,7 @@ import { LendCdPage } from './pages/lend-cd/lend-cd.page';
 import { AuthService } from './services/auth.service';
 import { IonicStorageModule } from '@ionic/storage';
 import {ReactiveFormsModule} from '@angular/forms';
+import {FirebaseService} from './services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     DataService,
-    AuthService
+    AuthService,
+    FirebaseService
   ],
   bootstrap: [AppComponent]
 })

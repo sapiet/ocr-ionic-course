@@ -16,8 +16,8 @@
       <ion-label>
         <h2>
           {{ cd.name }}
-          <ion-badge [color]="cd.borrower !== null ? 'danger' : 'success'">
-            {{ cd.borrower !== null ? 'prêté à "' + cd.borrower + '"' : 'dispo' }}
+          <ion-badge [color]="cd.borrower ? 'danger' : 'success'">
+            {{ cd.borrower ? 'prêté à "' + cd.borrower + '"' : 'dispo' }}
           </ion-badge>
         </h2>
         <h3>{{ cd.artist }}</h3>

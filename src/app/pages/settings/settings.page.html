@@ -8,10 +8,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label>Admin mode</ion-label>
-      <ion-checkbox color="primary" slot="start"></ion-checkbox>
-    </ion-item>
-  </ion-list>
+  <h2>CDs</h2>
+  <div>
+    <ion-button color="dark" (click)="setCDs()">Set CDs from dataService to Firebase</ion-button>
+    <ion-button color="dark" (click)="getCDs()">Get CDs from database and save them with Ionic Storage</ion-button>
+  </div>
+
+  <h2>Books</h2>
+  <div>
+    <ion-button color="dark" (click)="setBooks()">Set books from database to Firebase</ion-button>
+    <ion-button color="dark" (click)="getBooks()">Get books from database and save them with Ionic Storage</ion-button>
+  </div>
 </ion-content>

@@ -15,10 +15,10 @@
       <ion-input type="text" name="borrower" formControlName="borrower"></ion-input>
     </ion-item>
 
-    <ion-button [disabled]="null === book.borrower" (click)="action(false)">
+    <ion-button [disabled]="!book.borrower" (click)="action(false)">
       Rendre
     </ion-button>
-    <ion-button [disabled]="form.invalid || null !== book.borrower" (click)="action(true)">
+    <ion-button [disabled]="form.invalid || book.borrower" (click)="action(true)">
       Prêter
     </ion-button>
   </form>

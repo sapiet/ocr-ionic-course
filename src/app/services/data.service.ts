@@ -5,33 +5,36 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class DataService {
-  private books = [
+
+  /**
+   * Public only for testing purposes / hydrating the database
+   */
+  public books = [
     {
       name: 'Symfony',
       editor: 'Apress',
       description: 'The definitive guide to Symfony',
       picture: 'https://images-na.ssl-images-amazon.com/images/I/71zxPjfvZyL.jpg',
-      borrower: null
     }, {
       name: 'Star Wars Death Troopers',
       editor: 'Joe Schreiber',
       description: 'New York Times Bestseller',
       picture: 'https://images-na.ssl-images-amazon.com/images/I/519N8frZJzL._SX303_BO1,204,203,200_.jpg',
-      borrower: null
     }
   ];
 
-  private cds = [
+  /**
+   * Public only for testing purposes / hydrating the database
+   */
+  public cds = [
     {
       name: 'The Common Man\'s Collapse',
       artist: 'Veil Of Maya',
       picture: 'https://images-na.ssl-images-amazon.com/images/I/81EHgARqH8L._SL1425_.jpg',
-      borrower: null
     }, {
       name: 'Titan',
       artist: 'Anup Sastry',
       picture: 'https://f4.bcbits.com/img/a3172076385_10.jpg',
-      borrower: null
     },
   ];
 
@@ -40,21 +43,20 @@ export class DataService {
   ){
   }
 
+  public setBooks(books) {
+    this.storage.set('books', books);
+  }
+
   public getBooks() {
-    /**
-     * @todo: Trouver une solution d'initialisation
-     */
-    // this.storage.set('books', this.books);
 
     return this.storage.get('books');
   }
 
-  public getCDs() {
-    /**
-     * @todo: Trouver une solution d'initialisation
-     */
-    // this.storage.set('cds', this.cds);
+  public setCDs(cds) {
+    this.storage.set('cds', this.cds);
+  }
 
+  public getCDs() {
     return this.storage.get('cds');
   }
 

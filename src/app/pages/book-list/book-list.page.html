@@ -16,8 +16,8 @@
       <ion-label>
         <h2>
           {{ book.name }}
-          <ion-badge [color]="book.borrower !== null ? 'danger' : 'success'">
-            {{ book.borrower !== null ? 'prêté à "' + book.borrower + '"' : 'dispo' }}
+          <ion-badge [color]="book.borrower ? 'danger' : 'success'">
+            {{ book.borrower ? 'prêté à "' + book.borrower + '"' : 'dispo' }}
           </ion-badge>
         </h2>
         <h3>{{ book.editor }}</h3>
