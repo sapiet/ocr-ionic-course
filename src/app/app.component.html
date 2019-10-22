@@ -7,9 +7,11 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item *ngFor="let item of menu" (click)="navigate(item)">
-          {{ item.label }}
-        </ion-item>
+        <ng-container *ngFor="let item of menu">
+          <ion-item (click)="navigate(item)" *ngIf="!item.requireAuthentication || isAuthenticated">
+            {{ item.label }}
+          </ion-item>
+        </ng-container>
       </ion-list>
     </ion-content>
   </ion-menu>

@@ -11,11 +11,13 @@ import * as firebase from 'firebase';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  public isAuthenticated = false;
+
   public menu = [
-    {label: 'Book list', path: 'tabs/book-list'},
-    {label: 'CD list', path: 'tabs/cd-list'},
-    {label: 'Settings', path: 'settings'},
-    {label: 'Sign out', method: 'onSignOut'},
+    {label: 'Book list', path: 'tabs/book-list', requireAuthentication: true},
+    {label: 'CD list', path: 'tabs/cd-list', requireAuthentication: true},
+    {label: 'Settings', path: 'settings', requireAuthentication: true},
+    {label: 'Sign out', method: 'onSignOut', requireAuthentication: true},
   ];
 
   constructor(
@@ -69,8 +71,10 @@ export class AppComponent {
     firebase.auth().onAuthStateChanged(
       (user) => {
         if (user) {
+          this.isAuthenticated = true;
           this.router.navigate(['tabs']);
         } else {
+          this.isAuthenticated = false;
           this.router.navigate(['auth', 'sign-in']);
         }
       }
