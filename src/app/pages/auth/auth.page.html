@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Auth</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" name="title" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" name="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <div>
+      <button ion-button type="submit" block>
+        <span *ngIf="mode === 'signin'">Sign in</span>
+        <span *ngIf="mode === 'signup'">Sign up</span>
+      </button>
+
+      <a  *ngIf="mode === 'signin'" (click)="setMode('sign-up')">
+        Create account
+      </a>
+
+      <a *ngIf="mode === 'signup'" (click)="setMode('sign-in')">
+        Sign in instead
+      </a>
+    </div>
+
+    <ion-text *ngIf="errorMessage" color="danger">
+      An error occured: {{ errorMessage }}
+    </ion-text>
+  </form>
+</ion-content>

@@ -9,6 +9,17 @@
 </ion-header>
 
 <ion-content>
-  <ion-button [disabled]="false === book.lent" (click)="action(false)">Rendre</ion-button>
-  <ion-button [disabled]="true === book.lent" (click)="action(true)">Prêter</ion-button>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label>Borrower</ion-label>
+      <ion-input type="text" name="borrower" formControlName="borrower"></ion-input>
+    </ion-item>
+
+    <ion-button [disabled]="null === book.borrower" (click)="action(false)">
+      Rendre
+    </ion-button>
+    <ion-button [disabled]="form.invalid || null !== book.borrower" (click)="action(true)">
+      Prêter
+    </ion-button>
+  </form>
 </ion-content>

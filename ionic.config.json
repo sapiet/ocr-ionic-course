@@ -1,5 +1,7 @@
 {
   "name": "ocr-ionic-course",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

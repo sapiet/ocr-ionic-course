@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'cd-list', loadChildren: './pages/cd-list/cd-list.module#CdListPageModule' },
   { path: 'lend-book', loadChildren: './pages/lend-book/lend-book.module#LendBookPageModule' },
   { path: 'lend-cd', loadChildren: './pages/lend-cd/lend-cd.module#LendCdPageModule' },
-  { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' }
+  { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
+  { path: 'auth', loadChildren: './pages/auth/auth.module#AuthPageModule' }
 ];
 @NgModule({
   imports: [

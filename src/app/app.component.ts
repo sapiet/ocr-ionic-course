@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-
-import {MenuController, Platform} from '@ionic/angular';
+import {Component, ViewChild} from '@angular/core';
+import {MenuController, NavController, Platform} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,7 @@ export class AppComponent {
     {label: 'Book list', path: 'tabs/book-list'},
     {label: 'CD list', path: 'tabs/cd-list'},
     {label: 'Settings', path: 'settings'},
+    {label: 'Sign out', method: 'onSignOut'},
   ];
 
   constructor(
@@ -31,11 +32,48 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.initializeFirebase();
     });
   }
 
   navigate(item) {
-    this.router.navigate([item.path]);
+    if (item.path) {
+      this.router.navigate([item.path]);
+    } else if (item.method) {
+      this[item.method]();
+    }
+
     this.menuCtrl.close();
+  }
+
+  onSignOut() {
+    firebase.auth().signOut();
+    this.menuCtrl.close();
+  }
+
+  private initializeFirebase() {
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyB34b3XiwWIWH84EDwPiaWtOSBwCzqYuFc",
+      authDomain: "ocr-ionic-1e74e.firebaseapp.com",
+      databaseURL: "https://ocr-ionic-1e74e.firebaseio.com",
+      projectId: "ocr-ionic-1e74e",
+      storageBucket: "ocr-ionic-1e74e.appspot.com",
+      messagingSenderId: "331314983610",
+      appId: "1:331314983610:web:339d10dbc1678e2371c883",
+      measurementId: "G-C2CD70108G"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    firebase.auth().onAuthStateChanged(
+      (user) => {
+        if (user) {
+          this.router.navigate(['tabs']);
+        } else {
+          this.router.navigate(['auth', 'sign-in']);
+        }
+      }
+    );
   }
 }
